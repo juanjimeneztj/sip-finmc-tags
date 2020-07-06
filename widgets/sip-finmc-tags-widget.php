@@ -825,6 +825,8 @@ class sip_finmc_tags extends Widget_Base {
         <script>
         let sql_data = '';
         $('.juanjimeneztj_tags_item_group input').click(function(){
+            $( '.juanjimeneztj-articles-content' ).addClass('active');
+            $( '.juanjimeneztj-articles-content' ).html('');
             sql_data = '';
             $('input').each(function(){
                 if ($(this).is(':checked') ) {
@@ -841,6 +843,7 @@ class sip_finmc_tags extends Widget_Base {
                 dataType: 'html', // add data type
                 data: { action : 'juanjimeneztj_get_ajax_posts', sql_d: sql_data },
                 success: function( response ) {
+                    $( '.juanjimeneztj-articles-content' ).removeClass('active');
                     $( '.juanjimeneztj-articles-content' ).html( response ); 
                 }
             });

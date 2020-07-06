@@ -12,6 +12,14 @@
     margin-left: 20px;
     width: 75%
 }
+.juanjimeneztj_wrapper > .juanjimeneztj-articles-content.active{
+    background-image: url(../images/loading.gif);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    height: auto; 
+    min-height: 150px;
+}
 .juanjimeneztj_wrapper .juanjimeneztj_tags_content_item{
     border: 1px solid transparent;
     display: block !important;
