@@ -15,8 +15,8 @@
 .juanjimeneztj_wrapper > .juanjimeneztj-articles-content.active{
     background-image: url(../images/loading.gif);
     background-repeat: no-repeat;
-    background-size: auto;
-    background-position: center;
+    background-size: 70px 70px;
+    background-position: center center;
     height: auto; 
     min-height: 150px;
 }
