@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: JUANJIMENEZTJ/FinMC/SIP Extension TAGS
-Plugin URI: https://elementor.juanjimeneztj.com/wp-content/plugins/sip-finmc-tags
+Plugin URI: https://github.com/juanjimeneztj/sip-finmc-tags
 Description: Custom Elementor extension/plugin to display Tags on websites related to the company Sir Isaac Publishing/Financial Media Corp. By Juan Jimenez.
-Version: 1.0.1
+Version: 1.1.0
 Author: Juan Jimenez
 Author URI: https://juanjimeneztj.com/
 License: GPL2+
