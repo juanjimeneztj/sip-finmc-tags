@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 final class sip_finmc_tags {
 
-	const VERSION = '1.0.1';
+	const VERSION = '1.1.0';
 
 	const MINIMUM_ELEMENTOR_VERSION = '2.0.0';
 

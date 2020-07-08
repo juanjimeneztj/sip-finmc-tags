@@ -823,31 +823,72 @@ class sip_finmc_tags extends Widget_Base {
         echo "
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
         <script>
-        let sql_data = '';
-        $('.juanjimeneztj_tags_item_group input').click(function(){
-            $( '.juanjimeneztj-articles-content' ).addClass('active');
-            $( '.juanjimeneztj-articles-content' ).html('');
-            sql_data = '';
-            $('input').each(function(){
-                if ($(this).is(':checked') ) {
-                    if(sql_data==''){
-                        sql_data = $(this).attr('id');
-                    }else{
-                        sql_data = sql_data + ',' + $(this).attr('id');
+            let sql_data = '';
+            let tagSelected = document.getElementsByClassName('elementor-heading-title');
+            
+            if(tagSelected.length > 0){
+                let inputId;
+                let tagSelectedCurrent = tagSelected[0].innerText;
+                tagSelectedCurrent = tagSelectedCurrent.toUpperCase();
+                
+                $('.juanjimeneztj_tags_content_item input').each(function(){
+                    inputId = $(this).attr('id');
+                    inputId = inputId.toUpperCase();
+                    if ( inputId == tagSelectedCurrent ) {
+                        $(this).attr('checked','checked');
                     }
-                }
+                });
+                
+                $( '.juanjimeneztj-articles-content' ).addClass('active');
+                $( '.juanjimeneztj-articles-content' ).html('');
+                sql_data = '';
+                $('.juanjimeneztj_tags_content_item input').each(function(){
+                    if ($(this).is(':checked') ) {
+                        if(sql_data==''){
+                            sql_data = $(this).attr('id');
+                        }else{
+                            sql_data = sql_data + ',' + $(this).attr('id');
+                        }
+                    }
+                });
+                $.ajax({
+                    type: 'POST',
+                    url: '".admin_url("admin-ajax.php")."',
+                    dataType: 'html', // add data type
+                    data: { action : 'juanjimeneztj_get_ajax_posts', sql_d: sql_data },
+                    success: function( response ) {
+                        $( '.juanjimeneztj-articles-content' ).removeClass('active');
+                        $( '.juanjimeneztj-articles-content' ).html( response ); 
+                    }
+                });
+            }else{
+                console.log('This page is not a category or archives page');
+            }
+        
+            $('.juanjimeneztj_tags_item_group input').click(function(){
+                $( '.juanjimeneztj-articles-content' ).addClass('active');
+                $( '.juanjimeneztj-articles-content' ).html('');
+                sql_data = '';
+                $('input').each(function(){
+                    if ($(this).is(':checked') ) {
+                        if(sql_data==''){
+                            sql_data = $(this).attr('id');
+                        }else{
+                            sql_data = sql_data + ',' + $(this).attr('id');
+                        }
+                    }
+                });
+                $.ajax({
+                    type: 'POST',
+                    url: '".admin_url("admin-ajax.php")."',
+                    dataType: 'html', // add data type
+                    data: { action : 'juanjimeneztj_get_ajax_posts', sql_d: sql_data },
+                    success: function( response ) {
+                        $( '.juanjimeneztj-articles-content' ).removeClass('active');
+                        $( '.juanjimeneztj-articles-content' ).html( response ); 
+                    }
+                });
             });
-            $.ajax({
-                type: 'POST',
-                url: '".admin_url("admin-ajax.php")."',
-                dataType: 'html', // add data type
-                data: { action : 'juanjimeneztj_get_ajax_posts', sql_d: sql_data },
-                success: function( response ) {
-                    $( '.juanjimeneztj-articles-content' ).removeClass('active');
-                    $( '.juanjimeneztj-articles-content' ).html( response ); 
-                }
-            });
-        });
         </script>";
 	}
 
